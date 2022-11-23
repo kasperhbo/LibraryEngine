@@ -6,13 +6,19 @@ import fluffy.engine.library.scenes.*;
 import fluffy.utils.*;
 import template.library.*;
 
+void settings(){
+  
+  int sizeX = 1920;
+  int sizeY = 1080;
+  
+  size(sizeX,sizeY);
+}
 
 void setup(){
-    size(800,800);
+   
     Window.get().setParent(this);
     Window.get().addScene(new TestScene("testScene"));
-    Window.get().changeScene("testScene");
-    
+    Window.get().changeScene("testScene"); 
 }
 
 void draw(){

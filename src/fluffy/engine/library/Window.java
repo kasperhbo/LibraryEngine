@@ -4,6 +4,7 @@ import java.util.HashMap;
 
 import fluffy.engine.library.scenes.Scene;
 import fluffy.utils.Time;
+import fluffy.utils.Vector2;
 import processing.core.PApplet;
 import processing.core.PGraphics;
 
@@ -14,6 +15,8 @@ public class Window {
 
 	private static HashMap<String, Scene> scenes = new HashMap<>();
 	private static Scene currentScene = null;	
+	
+	private final Vector2 worldSize = new Vector2(1920, 1080);
 	
 	float beginTime;
     float endTime;
@@ -56,23 +59,26 @@ public class Window {
     	return true;
     }
     
-    public void loop() {    	
-    	if(parent == null){
+    public void loop() {
+		if (parent == null) {
 			System.out.println("Please set parent on window object using Window.get().setParent(this) in the setup of your application!");
 			return;
 		}
 
-    	if(currentScene != null)
-    	{
+		if (currentScene != null) {
 			if (dt >= 0) {
-		        currentScene.update(dt);	        
-		    }    	
-			
+				currentScene.update(dt);
+			}
+
 			currentScene.render();
-	    }
-		
-        endTime = Time.getTime();
-        dt = endTime - beginTime;
-        beginTime = endTime;
-    }
+		}
+
+		endTime = Time.getTime();
+		dt = endTime - beginTime;
+		beginTime = endTime;
+	}
+
+	public Vector2 getViewPortProjection() {
+		return worldSize;
+	}
 }

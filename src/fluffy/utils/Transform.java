@@ -25,6 +25,7 @@ public class Transform {
 		if (!(o instanceof Transform)) return false;
 
 		Transform t = (Transform)o;
+		
 		return t.position.equals(this.position) && t.size.equals(this.size);
 	}
 }

@@ -46,8 +46,10 @@ public abstract class Scene implements IRenderable{
 	@Override
 	public void render() {
 		Window.getParent().translate(camera.transform.position.x, camera.transform.position.y);
-		Window.getParent().background(clearColor.x * 255, clearColor.y * 255, clearColor.z * 255, clearColor.w * 255);
-
+		//Window.getParent().background(clearColor.x * 255, clearColor.y * 255, clearColor.z * 255, clearColor.w * 255);
+	}
+	
+	public void renderGameobjects() {
 		gameobjects.forEach((key,value) -> value.render());
 	}
 	

@@ -6,10 +6,10 @@ public class TestScene extends Scene{
   
   public TestScene(String sceneName){
     super(sceneName);
-    Player player = new Player("player", new Transform(new Vector2(400,400), new Vector2(50,50)));
-    this.addGameobject(player);
     
-    addAudio();
+    Player player = new Player("player", new Transform(new Vector2(0,0), new Vector2(100,100)));
+    
+    this.addGameobject(player);
   }
   
   private void addAudio(){
@@ -24,5 +24,11 @@ public class TestScene extends Scene{
   @Override
   public void update(float dt){
     super.update(dt);
+  }
+  
+  @Override
+  public void render(){
+    super.render();
+    super.renderGameobjects();
   }
 }

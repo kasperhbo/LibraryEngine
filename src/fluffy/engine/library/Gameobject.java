@@ -16,7 +16,25 @@ public class Gameobject implements IRenderable {
 	public Gameobject(String name, Transform transform)
 	{
 		this.name = name;
-		this.transform = transform;
+		
+		float wWhidth = Window.getParent().width;
+		float wHeight = Window.getParent().height;
+		
+		float mulX  = wWhidth / Window.get().getViewPortProjection().x;
+		float mulY  = wHeight / Window.get().getViewPortProjection().y;
+				
+		float posX = transform.position.x * mulX;
+		float posY = transform.position.y * mulY;
+		
+		float scaleX = transform.size.x * mulX;
+		float scaleY = transform.size.y * mulY;
+		
+		Vector2 pos = new Vector2(posX, posY);
+		Vector2 size = new Vector2(scaleX, scaleY);
+		
+		this.transform = new Transform(pos, size);
+		
+		
 		for (int i=0; i < components.size(); i++) {
 			components.get(i).init(this);
 		}
@@ -28,7 +46,6 @@ public class Gameobject implements IRenderable {
 	}
 	
 	public void start()	{
-
 		for (int i=0; i < components.size(); i++) {
 			components.get(i).start();
 		}
